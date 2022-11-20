@@ -57,12 +57,9 @@ class Command(BaseCommand):
         if not order_items:
             return 
         
-        order_obj, order_created = Order.objects.get_or_create(
-            items=list(order_items.keys())
-        )
-
-        if order_created:
-            print(f"Sucessfully created order {order_obj}")
+        order_obj = Order.objects.create()
+        order_obj.items.add(*list(order_items.values()))
+        order_obj.save()
         
 
     def handle(self, *args, **options):

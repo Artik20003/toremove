@@ -8,9 +8,10 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: sh -c "python3 manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py create_admin && python3 manage.py create_instances && python3 manage.py runserver 0.0.0.0:8000"
     environment:
       - DEBUG=1
-      - DJANGO_SECRET_KEY="Your Django Secret Key here" 
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY} 
       - STRIPE_PUBLIC_API_KEY="Your Stripe Publishable Key here"
       - STRIPE_API_KEY="Your Stripe Private Key here"
+

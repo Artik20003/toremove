@@ -12,8 +12,3 @@ WORKDIR /app
 
 RUN touch core/management/commands/create_instances.py
 RUN touch core/management/commands/create_admin.py
-
-RUN python3 manage.py migrate
-RUN python3 manage.py create_admin
-RUN python3 manage.py create_instances
-

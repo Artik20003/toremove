@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 
                 username = user["username"]
                 password = user["password"]
-                email = user["email1"]
+                email = user["email"]
                 
                 print('Creating account for %s ' % (username))
                 
